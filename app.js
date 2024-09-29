@@ -2,12 +2,17 @@ function sortear(){
     let quantidadeDeNumeros = parseInt(document.getElementById('quantidade').value);
     let minimo = parseInt(document.getElementById('de').value);
     let maximo = parseInt(document.getElementById('ate').value);
+    if (minimo > maximo) {
+           alert('Erro , número invalido'); 
+           return;
+    }
 
     let listaDeNumeros = [];
     let numero;
 
     for (let i = 0; i < quantidadeDeNumeros; i++) {
         numero = gerarNumerosAleatorios(minimo , maximo);
+      
         listaDeNumeros.push(numero);
     }
 
