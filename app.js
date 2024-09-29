@@ -1,34 +1,27 @@
-let listaDeNumeros = [];
+
 
 
 
 function sortear(){
-    gerarNumerosAleatorios();
-}
-
-function gerarNumerosAleatorios() {
     let quantidadeDeNumeros = parseInt(document.getElementById('quantidade').value);
     let minimo = parseInt(document.getElementById('de').value);
     let maximo = parseInt(document.getElementById('ate').value);
 
-for (let i = quantidadeDeNumeros; i > 0; i--){
-    let numerosSorteados = parseInt(Math.random()*maximo +1);
+    let listaDeNumeros = [];
+    let numero;
 
-    if (numerosSorteados < minimo) {
-      return gerarNumerosAleatorios();  
-    }else{
+    for (let i = 0; i < quantidadeDeNumeros; i++) {
+        numero = gerarNumerosAleatorios(minimo , maximo);
+        listaDeNumeros.push(numero);
+    }
 
-    listaDeNumeros.push (numerosSorteados);}
-    console.log (listaDeNumeros);}
+    let resultado = document.getElementById('resultado');
+    resultado.innerHTML = `<label class="texto__paragrafo">Números sorteados: ${listaDeNumeros}</label>`;
+}
 
-        alterarTexto('resultado', `Números sorteados: ${listaDeNumeros}`);
+function gerarNumerosAleatorios(min , max) {
 
-        return numerosSorteados;
-        
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+
             }
 
-function alterarTexto (id , texto) {
-    let campo = document.getElementById(id);
-    campo.innerHTML = texto;
-    
-}
